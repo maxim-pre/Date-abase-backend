@@ -27,13 +27,13 @@ MVP
 - As a geek I want to specify my gender and which gender(s) I’m interested in so I only see partners who are mutually interested in each other
 - As a dork I want to browse other nerds’ profiles so I can learn more about them
 - As a geek I want to select my favourite dorks so I can express my interest in them
-- As a geek I want to be notified when someone favourites me so I can see if we are interested in each other
-- As a dork I want to be notified when I have favourited someone and they have favourited me, so I can know we are both interested in each other
-- As a nerd I want to message geeks I have matched with so we can arrange a date
 - As a nerd I would like the option to select or reject any profile I want
 
 Beyond MVP
 
+- As a geek I want to be notified when someone favourites me so I can see if we are interested in each other
+- As a nerd I want to message geeks I have matched with so we can arrange a date
+- As a dork I want to be notified when I have favourited someone and they have favourited me, so I can know we are both interested in each other
 - As a nerd I want to upload a photo of myself so other nerds know what I look like
 - As a dork I want to get some helpful (nerdy) chat up lines so I can break the ice with my date more easily
 - As a geek I want to see only the dorks near me so I can meet them without travelling too far
