@@ -1,18 +1,22 @@
 import mongoose from "mongoose";
 
-const messageSchema = new mongoose.Schema({
-  sentBy: Number,
-  recievedBy: Number,
-  sentOn: Date,
-  readOn: Date,
-  content: String,
-});
+const messageSchema = new mongoose.Schema(
+  {
+    sentBy: Number,
+    recievedBy: Number,
+    content: String,
+  },
+  {
+    timestamps: true,
+  }
+);
 
+// whoever initiates the conversation is participant one
+// participant one and two are user ids in string format
 const conversationSchema = new mongoose.Schema(
   {
-    users: [Number],
-    startedOn: Date,
-    endedOn: Date,
+    participantOne: { type: String, required: true },
+    participantTwo: { type: String, required: true },
     messages: [messageSchema],
   },
   {
