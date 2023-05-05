@@ -1,17 +1,19 @@
-// Require NPM packages
-const express = require('express');
-const mongoose = require ('mongoose');
-const cors = require('cors');
-
+// Import NPM packages
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+import questionRouter from "./routes/questionRouter.js";
+import userRouter from "./routes/userRouter.js";
+import conversationRouter from "./routes/conversationRouter.js";
 // Database configuration
 const db = mongoose.connection;
-const dbConfig = require ('./config/db');
+import currentDB from "./config/db.js";
 
 // Establish database connection
-mongoose.connect(dbConfig)
-db.on('error', (error) => console.log(`ERROR: ${error.message}`));
-db.on('connected', () => console.log(`MongoDB connected at ${dbConfig}`));
-db.on('disconnected', () => console.log('MongoDB disconnected'));
+mongoose.connect(currentDB);
+db.on("error", (error) => console.log(`ERROR: ${error.message}`));
+db.on("connected", () => console.log(`MongoDB connected at ${currentDB}`));
+db.on("disconnected", () => console.log("MongoDB disconnected"));
 
 // Instantiate express application object
 const app = express();
@@ -24,13 +26,20 @@ const port = process.env.PORT || 5007;
 // Use body-parser middleware to parse the request body
 app.use(express.json());
 // Set CORS headers on response from this API using the 'cors' NPM package
-app.use(cors({
-    origin: 'http://localhost:3000',
-}))
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+  })
+);
 
 // Require necessary route files
 // Testing route
-app.get('/', (req, res) => res.send('Hello World!'))
+app.get("/", (req, res) => res.send("Hello World!"));
+
+// Import routes
+app.use(questionRouter);
+app.use(userRouter);
+app.use(conversationRouter);
 
 // Start the server and listen for requests on the given port
-app.listen(port, () => console.log(`Date-abase is listening on port ${port}`))
+app.listen(port, () => console.log(`Date-abase is listening on port ${port}`));
