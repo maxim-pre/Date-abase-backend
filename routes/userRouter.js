@@ -1,13 +1,11 @@
-const mongoose = require("mongoose");
-const express = require("express");
-const User = require("../models/user");
+import express from "express";
 import {
   getAllUsers,
   getUserById,
   createUser,
   updateUserById,
   deleteUserById,
-} from "../controllers/userController";
+} from "../controllers/userController.js";
 
 const router = express.Router();
 
@@ -21,4 +19,4 @@ router.put("/api/users/:id", updateUserById);
 
 router.delete("/api/users/:id", deleteUserById);
 
-module.exports = router;
+export default router;

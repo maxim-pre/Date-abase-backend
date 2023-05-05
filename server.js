@@ -1,23 +1,22 @@
-// Require NPM packages
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-import dbConfig from "../config/db";
+// Import NPM packages
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+import questionRouter from "./routes/questions.js";
+import userRouter from "./routes/userRouter.js";
 
 // Database configuration
 const db = mongoose.connection;
-// const dbConfig = require("./config/db");
+import currentDB from "./config/db.js";
 
 // Establish database connection
-mongoose.connect(dbConfig);
+mongoose.connect(currentDB);
 db.on("error", (error) => console.log(`ERROR: ${error.message}`));
-db.on("connected", () => console.log(`MongoDB connected at ${dbConfig}`));
+db.on("connected", () => console.log(`MongoDB connected at ${currentDB}`));
 db.on("disconnected", () => console.log("MongoDB disconnected"));
 
 // Instantiate express application object
 const app = express();
-
-const userRouter = require("./routes/userRouter");
 
 // Define port for the API to run on
 // Try to find an environment first, if not then go for 5007
@@ -35,8 +34,11 @@ app.use(
 
 // Require necessary route files
 // Testing route
-app.use(userRouter);
 app.get("/", (req, res) => res.send("Hello World!"));
+
+// Import routes
+app.use("/questions", questionRouter);
+app.use(userRouter);
 
 // Start the server and listen for requests on the given port
 app.listen(port, () => console.log(`Date-abase is listening on port ${port}`));

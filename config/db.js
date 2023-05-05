@@ -6,5 +6,4 @@ const localDB = "mongodb://localhost:27017/date-abase";
 const currentDB = process.env.MONGODB_URI || localDB;
 
 // Export the appropriate database based on the current environment
-// module.exports = currentDB
-export default { currentDB };
+export default currentDB;
