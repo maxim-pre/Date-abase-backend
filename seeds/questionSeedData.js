@@ -1,11 +1,4 @@
-import mongoose from "mongoose";
-import currentDB from "../config/db.js";
-import { Question } from "../models/question.js";
-
-const db = mongoose.connection;
-mongoose.connect(currentDB);
-
-const questions = [
+export const questions = [
     {
         questionText: "What's the best tech stack?",
         possibleAnswers: ["MEAN", "MERN", "MEVN", "LAMP", "PERN", "Ruby on Rails-based", "Python-based", "Serverless"],
