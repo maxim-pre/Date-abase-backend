@@ -24,12 +24,12 @@ const port = process.env.PORT || 5007;
 // Use body-parser middleware to parse the request body
 app.use(express.json());
 // Set CORS headers on response from this API using the 'cors' NPM package
-// This is very naughty, we should do it correctly when we have more time
 app.use(cors({
     origin: 'http://localhost:3000',
 }))
 
 // Require necessary route files
+// Testing route
 app.get('/', (req, res) => res.send('Hello World!'))
 
 // Start the server and listen for requests on the given port
