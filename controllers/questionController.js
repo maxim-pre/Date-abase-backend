@@ -9,7 +9,7 @@ const getQuestions = async (req, res) => {
         res.status(200).json(data)
     } catch (err) {
         console.log(err)
-        res.status(404).json({ message: 'something went wrong' })
+        res.status(404).json({ message: 'something went wrong', error: err })
     }
 }
 
@@ -21,7 +21,7 @@ const getOneQuestion = async (req, res) => {
         res.status(200).json(data)
     } catch (err) {
         console.log(err)
-        res.status(404).json({ message: 'something went wrong' })
+        res.status(404).json({ message: 'something went wrong', error: err })
     }
 }
 
@@ -32,19 +32,18 @@ const createOneQuestion = async (req, res) => {
         res.status(200).json(data)
     } catch (err) {
         console.log(err)
-        res.status(404).json({ message: 'cannot create new question' })
+        res.status(404).json({ message: 'cannot create new question', error: err })
     }
 }
 
 // Delete one question
 const deleteOneQuestion = async (req, res) => {
     try {
-        const { id } = req.params
-        const data = await Question.findByIdAndDelete(id)
+        const data = await Question.findByIdAndDelete(req.params.id)
         res.status(200).json({ message: 'complete' })
     } catch (err) {
         console.log(err)
-        res.status(404).json({ message: 'something went wrong' })
+        res.status(404).json({ message: 'something went wrong', error: err })
     }
 }
 
@@ -56,11 +55,17 @@ const updateOneQuestion = async (req, res) => {
             req.body.question,
             { new: true }
         )
-        if (!data) throw new Error()
-        res.status(200).json({ message: 'question not found' })
+        console.log(!data)
+        if (!data) {
+            throw new Error()
+            res.status(200).json({ message: 'question not found' })
+        }
+        else {
+            res.status(200).json(data)
+        }
     } catch (err) {
         console.log(err)
-        res.status(404).json({ message: 'something went wrong' })
+        res.status(404).json({ message: 'something went wrong', error: err  })
     }
 }
 

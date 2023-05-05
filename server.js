@@ -4,7 +4,9 @@ import mongoose from "mongoose";
 import cors from "cors";
 import questionRouter from "./routes/questionRouter.js";
 import userRouter from "./routes/userRouter.js";
+import surveyRouter from "./routes/surveyRouter.js";
 import conversationRouter from "./routes/conversationRouter.js";
+
 // Database configuration
 const db = mongoose.connection;
 import currentDB from "./config/db.js";
@@ -39,6 +41,7 @@ app.get("/", (req, res) => res.send("Hello World!"));
 // Import routes
 app.use(questionRouter);
 app.use(userRouter);
+app.use(surveyRouter);
 app.use(conversationRouter);
 
 // Start the server and listen for requests on the given port
