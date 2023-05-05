@@ -6,6 +6,7 @@ import questionRouter from "./routes/questionRouter.js";
 import userRouter from "./routes/userRouter.js";
 import surveyRouter from "./routes/surveyRouter.js";
 import conversationRouter from "./routes/conversationRouter.js";
+import authenticationRouter from "./routes/authenticationRouter.js";
 
 // Database configuration
 const db = mongoose.connection;
@@ -43,6 +44,7 @@ app.use(questionRouter);
 app.use(userRouter);
 app.use(surveyRouter);
 app.use(conversationRouter);
+app.use(authenticationRouter);
 
 // Start the server and listen for requests on the given port
 app.listen(port, () => console.log(`Date-abase is listening on port ${port}`));
