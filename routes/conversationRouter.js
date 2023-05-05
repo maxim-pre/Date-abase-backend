@@ -45,4 +45,13 @@ router.put("/api/conversations/:id", async (req, res) => {
   }
 });
 
+router.delete("/api/conversations/:id", async (req, res) => {
+  try {
+    const conversation = await Conversation.findByIdAndDelete(req.params.id);
+    res.status(200).json({ conversation: conversation });
+  } catch (error) {
+    res.status(200).json(error);
+  }
+});
+
 export default router;
