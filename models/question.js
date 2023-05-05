@@ -4,10 +4,8 @@ import uniqueValidator from 'mongoose-unique-validator';
 const questionSchema = new mongoose.Schema({
     questionText: String,
     possibleAnswers: [String],
-    questionLive: { type: Boolean, default: true },
-    createdAt: { type: Date, default: Date.now },
-    updatedAt: { type: Date, default: Date.now }
-})
+    questionLive: { type: Boolean, default: true }
+}, {timestamps: true})
 
 questionSchema.plugin(uniqueValidator);
 
