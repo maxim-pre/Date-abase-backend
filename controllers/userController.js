@@ -1,4 +1,10 @@
 import { User } from "../models/user.js";
+import bcrypt from "bcrypt";
+
+// const hashPassword = (password) => {
+//   bcrypt.hash(password, 10)
+//     .then((hashedPassword) => { res.json(ha) })
+// }
 
 const getAllUsers = async (req, res) => {
   try {
@@ -18,9 +24,28 @@ const getUserById = async (req, res) => {
   }
 };
 
+// const createUser = (req, res) => {
+//   bcrypt.hashSync(req.body.user.password, 10)
+//   .then((hashedPassword) => {
+//     req.body.user.password = hashedPassword
+//     User.create(req.body.user)
+//       .then((newUser) => {
+//         res.status(200).json({ user: newUser })
+//       })
+//       .catch((error) => {
+//         res.status(500).json(error)
+//       })
+//   })
+//   .catch((error) => {res.status(500).json(error)})
+// }
+
 const createUser = async (req, res) => {
   try {
     const userInformation = req.body.user;
+    userInformation.password = bcrypt.hashSync(
+      userInformation.password,
+      10
+    );
     const newUser = await User.create(userInformation);
     res.status(200).json({ user: newUser });
   } catch (error) {
