@@ -34,12 +34,19 @@ router.post("/api/users", async (req, res) => {
 
 router.put("/api/users/:id", async (req, res) => {
   try {
-    console.log(req.body);
     const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
-    console.log(updatedUser);
     res.status(200).json({ user: updatedUser });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+router.delete("/api/users/:id", async (req, res) => {
+  try {
+    deletedUser = await User.findByIdAndDelete(req.params.id);
+    res.status(200).json({ user: deletedUser });
   } catch (error) {
     res.status(500).json(error);
   }
