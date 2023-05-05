@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 
+// sentBy is a user id in string format
 const messageSchema = new mongoose.Schema(
   {
-    sentBy: Number,
-    recievedBy: Number,
-    content: String,
+    sentBy: { type: String, required: true },
+    content: { type: String, required: true },
   },
   {
     timestamps: true,
