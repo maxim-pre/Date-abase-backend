@@ -2,7 +2,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import questionRouter from "./routes/questions.js";
+import questionRouter from "./routes/questionRouter.js";
 import userRouter from "./routes/userRouter.js";
 
 // Database configuration
@@ -37,7 +37,7 @@ app.use(
 app.get("/", (req, res) => res.send("Hello World!"));
 
 // Import routes
-app.use("/questions", questionRouter);
+app.use(questionRouter);
 app.use(userRouter);
 
 // Start the server and listen for requests on the given port

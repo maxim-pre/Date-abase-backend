@@ -5,7 +5,7 @@ import uniqueValidator from 'mongoose-unique-validator';
 // Get all questions
 const getQuestions = async (req, res) => {
     try {
-        const data = await Question.find()
+        const data = await Question.find({})
         res.status(200).json(data)
     } catch (err) {
         console.log(err)
@@ -16,8 +16,7 @@ const getQuestions = async (req, res) => {
 // Get one question
 const getOneQuestion = async (req, res) => {
     try {
-        const { id } = req.params
-        const data = await Question.findById(id).populate('comments')
+        const data = await Question.findById(req.params.id)
         if (!data) throw new Error('problem fetching single question from the DB')
         res.status(200).json(data)
     } catch (err) {
@@ -29,7 +28,7 @@ const getOneQuestion = async (req, res) => {
 // Create one question
 const createOneQuestion = async (req, res) => {
     try {
-        const data = await Question.create(req.body)
+        const data = await Question.create(req.body.question)
         res.status(200).json(data)
     } catch (err) {
         console.log(err)
@@ -52,10 +51,9 @@ const deleteOneQuestion = async (req, res) => {
 // Update one question
 const updateOneQuestion = async (req, res) => {
     try {
-        const { id } = req.params
         const data = await Question.findOneAndUpdate(
-            { _id: id },
-            { ...req.body },
+            req.params.id,
+            req.body.question,
             { new: true }
         )
         if (!data) throw new Error()
