@@ -13,4 +13,14 @@ router.get("/api/users", async (req, res) => {
   }
 });
 
+router.post("/api/users", async (req, res) => {
+  try {
+    const userInformation = req.body.user;
+    const newUser = User.create(userInformation);
+    res.status(200).json({ user: newUser });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 module.exports = router;
