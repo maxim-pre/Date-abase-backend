@@ -2,10 +2,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+import dbConfig from "../config/db";
 
 // Database configuration
 const db = mongoose.connection;
-const dbConfig = require("./config/db");
+// const dbConfig = require("./config/db");
 
 // Establish database connection
 mongoose.connect(dbConfig);
