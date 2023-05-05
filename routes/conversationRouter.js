@@ -1,5 +1,4 @@
 import express from "express";
-import { Conversation } from "../models/conversation.js";
 import {
   getConversationsByUserId,
   createConversation,
