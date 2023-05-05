@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const uniqueValidator = require('mongoose-unique-validator');
+import mongoose from 'mongoose';
+import uniqueValidator from 'mongoose-unique-validator';
 
 const questionSchema = new mongoose.Schema({
     questionText: String,
@@ -13,4 +13,4 @@ questionSchema.plugin(uniqueValidator);
 
 const Question = mongoose.model('Question', questionSchema);
 
-module.exports = Question;
+export {Question};
