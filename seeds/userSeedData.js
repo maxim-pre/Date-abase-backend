@@ -1,5 +1,5 @@
-import bcrypt from "bcryptjs";
-import { password1, password2, password3, password4 } from "../config/topSecret";
+import bcrypt from "bcrypt";
+import { password1, password2, password3, password4 } from "../config/topSecret.js";
 
 export const users = [
   {
