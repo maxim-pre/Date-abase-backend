@@ -1,29 +1,32 @@
+import bcrypt from "bcryptjs";
+import { password1, password2, password3, password4 } from "../config/topSecret";
+
 export const users = [
   {
     firstName: "Maxim",
     lastName: "Prestwich",
-    password: "1234",
+    password: bcrypt.hashSync(password1, 10),
     username: "maxim123",
     interestedInGender: "F",
   },
   {
     firstName: "Patrick",
     lastName: "Mallery",
-    password: "1234",
+    password: bcrypt.hashSync(password2, 10),
     username: "Pat123",
     interestedInGender: "F",
   },
   {
     firstName: "Louise",
     lastName: "Jones",
-    password: "1234",
+    password: bcrypt.hashSync(password3, 10),
     username: "Louise123",
     interestedInGender: "M",
   },
   {
     firstName: "Simeon",
     lastName: "Oye",
-    password: "1234",
+    password: bcrypt.hashSync(password4, 10),
     username: "Simeon123",
     interestedInGender: "F",
   },
