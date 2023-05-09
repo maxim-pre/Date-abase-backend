@@ -9,26 +9,34 @@ const router = express.Router();
 
 const checkUser = async (username, password, res) => {
   const user = await User.findOne({ username: username });
-  const match = await bcrypt.compare(password, user.password);
-  if (match) {
-    const payload = {
-      id: user.id,
-    };
-    const token = jwt.sign(payload, jwtOptions.secretOrKey, {
-      expiresIn: 60,
-    });
-    return res.status(200).json({ success: true, token: token });
-  } else {
-    return res
-      .status(400)
-      .json({ success: false, message: "invalid username or password" });
+  if (user) {
+    const match = await bcrypt.compare(password, user.password);
+    if (match) {
+      const payload = {
+        id: user.id,
+      };
+      const token = jwt.sign(payload, jwtOptions.secretOrKey, {
+        expiresIn: 60,
+      });
+      return res.status(200).json({ success: true, token: token });
+    } else {
+      return res
+        // .status(400)
+        .json({ success: false, message: "invalid username or password" });
+    }
   }
+  else {
+    return res
+    // .status(400)
+    .json({ success: false, message: "invalid username or password" });
+  }
+    
 };
 
 router.post("/api/login", async (req, res) => {
   const username = req.body.user.username;
+  console.log(req.body)
   const password = req.body.user.password;
-
   if (username && password) {
     try {
       checkUser(username, password, res);
