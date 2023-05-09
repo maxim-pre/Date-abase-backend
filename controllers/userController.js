@@ -49,7 +49,7 @@ const createUser = async (req, res) => {
     const newUser = await User.create(userInformation);
     res.status(200).json({ user: newUser });
   } catch (error) {
-    res.status(500).json(error);
+    res.status(406).json(error);
   }
 };
 
