@@ -21,13 +21,13 @@ const checkUser = async (username, password, res) => {
       return res.status(200).json({ success: true, token: token });
     } else {
       return res
-        // .status(400)
+        .status(400)
         .json({ success: false, message: "invalid username or password" });
     }
   }
   else {
     return res
-    // .status(400)
+    .status(400)
     .json({ success: false, message: "invalid username or password" });
   }
     
