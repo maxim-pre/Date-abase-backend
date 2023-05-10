@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema(
     photo: String,
     interestedInGender: { type: String, required: true },
     location: String,
-    matches: [Number],
+    matches: [String],
     surveyAnswersId: Number,
   },
   { timestamps: true }
