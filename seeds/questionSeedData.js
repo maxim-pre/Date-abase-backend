@@ -1,6 +1,6 @@
 export const questions = [
     {
-        questionText: "What's the best tech stack?",
+        questionText: "The best tech stack is...",
         possibleAnswers: ["MEAN", "MERN", "MEVN", "LAMP", "PERN", "Ruby on Rails-based", "Python-based", "Serverless"],
         questionLive: true
     },
@@ -10,7 +10,7 @@ export const questions = [
         questionLive: true
     },
     {
-        questionText: "When should comments be used?",
+        questionText: "Comments should be used...",
         possibleAnswers: ["As much as possible", "Only to explain ambiguities", "Only when a programmer isn't good enough to explain themselves"],
         questionLive: true
     },
@@ -20,7 +20,7 @@ export const questions = [
         questionLive: true
     },
     {
-        questionText: "When you're coding you...",
+        questionText: "When I'm coding I...",
         possibleAnswers: ["Shut the door and remove distractions", "Get brainstorming with others"],
         questionLive: true
     }
