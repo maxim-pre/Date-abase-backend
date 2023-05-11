@@ -6,10 +6,10 @@ const surveySchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }],
-    answers: { questionId: [{
+    answers: [{ questionId: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Question'
-    }], answer: String }
+    }], answer: String }]
 }, {timestamps: true})
 
 surveySchema.plugin(uniqueValidator);
