@@ -15,8 +15,6 @@ const checkUser = async (username, password, res) => {
       const payload = {
         id: user.id,
       };
-      console.log(jwtOptions);
-      console.log(typeof process.env.SECRET_KEY);
       const token = jwt.sign(payload, jwtOptions.secretOrKey, {
         expiresIn: 60,
       });
