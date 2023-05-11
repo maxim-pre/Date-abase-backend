@@ -8,7 +8,9 @@ import { User } from "../models/user.js";
 
 const seedData = async () => {
   try {
-    await mongoose.connect(currentDB);
+    mongoose.connect(currentDB, { useNewUrlParser: true });
+    db.once("open", () => console.log("Connected to MongoDB"));
+
     console.log("MongoDB connected at: " + currentDB);
     await mongoose.connection.db.dropDatabase();
     console.log("Deleted old Database");
