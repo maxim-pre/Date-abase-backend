@@ -13,7 +13,8 @@ const db = mongoose.connection;
 import currentDB from "./config/db.js";
 
 // Establish database connection
-mongoose.connect(currentDB);
+mongoose.connect(currentDB, { useNewUrlParser: true });
+db.once("open", () => console.log("Connected to MongoDB"));
 db.on("error", (error) => console.log(`ERROR: ${error.message}`));
 db.on("connected", () => console.log(`MongoDB connected at ${currentDB}`));
 db.on("disconnected", () => console.log("MongoDB disconnected"));
