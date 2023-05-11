@@ -24,18 +24,16 @@ const checkUser = async (username, password, res) => {
         .status(400)
         .json({ success: false, message: "invalid username or password" });
     }
-  }
-  else {
+  } else {
     return res
-    .status(400)
-    .json({ success: false, message: "invalid username or password" });
+      .status(400)
+      .json({ success: false, message: "invalid username or password" });
   }
-    
 };
 
 router.post("/api/login", async (req, res) => {
   const username = req.body.user.username;
-  console.log(req.body)
+  console.log(req.body);
   const password = req.body.user.password;
   if (username && password) {
     try {

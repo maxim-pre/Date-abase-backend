@@ -30,11 +30,7 @@ const port = process.env.PORT || 5007;
 // Use body-parser middleware to parse the request body
 app.use(express.json());
 // Set CORS headers on response from this API using the 'cors' NPM package
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-  })
-);
+app.use(cors());
 
 // Require necessary route files
 // Testing route
