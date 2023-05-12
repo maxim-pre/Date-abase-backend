@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import uniqueValidator from 'mongoose-unique-validator';
 
+// The questions the user would answer to decibe themselves like a bio.
 const questionSchema = new mongoose.Schema({
     questionText: String,
     possibleAnswers: [String],
