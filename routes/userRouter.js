@@ -1,3 +1,4 @@
+// Import required libraries and modules
 import express from "express";
 import {
   getAllUsers,
@@ -8,6 +9,9 @@ import {
 } from "../controllers/userController.js";
 
 const router = express.Router();
+
+// Define routes for getting all users, getting a user by ID, creating a user,
+// updating a user by ID, and deleting a user by ID
 
 router.get("/api/users", getAllUsers);
 

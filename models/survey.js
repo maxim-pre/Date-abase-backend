@@ -13,7 +13,7 @@ const surveySchema = new mongoose.Schema({
         ref: 'Question'
     }], answer: String }]
 }, {timestamps: true})
-
+// Use the uniqueValidator plugin for the survey schema
 surveySchema.plugin(uniqueValidator);
 
 const Survey = mongoose.model('Survey', surveySchema);
